@@ -3,6 +3,10 @@ module leoho.io/go-cloverdb-example
 go 1.22
 
 require (
+	github.com/ostafen/clover/v2 v2.0.0-alpha.3
+)
+
+require (
 	github.com/cespare/xxhash v1.1.0 // indirect
 	github.com/cespare/xxhash/v2 v2.3.0 // indirect
 	github.com/dgraph-io/badger/v3 v3.2103.5 // indirect
@@ -16,7 +20,6 @@ require (
 	github.com/google/flatbuffers v24.3.25+incompatible // indirect
 	github.com/google/orderedcode v0.0.1 // indirect
 	github.com/klauspost/compress v1.17.8 // indirect
-	github.com/ostafen/clover/v2 v2.0.0-alpha.3 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/satori/go.uuid v1.2.0 // indirect
 	github.com/vmihailenco/msgpack/v5 v5.4.1 // indirect
