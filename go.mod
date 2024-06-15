@@ -2,9 +2,7 @@ module leoho.io/go-cloverdb-example
 
 go 1.22
 
-require (
-	github.com/ostafen/clover/v2 v2.0.0-alpha.3
-)
+require github.com/ostafen/clover/v2 v2.0.0-alpha.3
 
 require (
 	github.com/cespare/xxhash v1.1.0 // indirect
