@@ -16,43 +16,46 @@ func main() {
 	defer database.DB.Context.Close()
 
 	// Import
-	importCollection()
+	// importCollection()
 
 	// Import All
-	importCollections()
+	// importCollections()
 
 	// Create Collection
 	newCollection()
 
 	// Create Collections
-	newCollections()
+	// newCollections()
 
 	// List Collections
 	listCollections()
 
 	// Create
-	newDocument()
+	// newDocument()
+
+	// Create All
+	newDocuments()
 
 	// Read
-	readDocument()
+	// readDocument()
 
 	// Read All
 	readDocuments()
 
 	// Update
-	updateDocument()
+	// updateDocument()
 
 	// Delete
-	deleteDocument()
+	// deleteDocument()
 
 	// Export
 	exportCollection()
 
 	// Export All
-	exportCollections()
+	// exportCollections()
 
 	// Drop
-	dropCollection()
+	// dropCollection()
 }
 
 /* Collection Operations */
@@ -118,6 +121,21 @@ func newDocument() {
 		panic(err)
 	}
 	fmt.Println(docId)
+}
+func newDocuments() {
+	documents := []map[string]interface{}{
+		{"name": "David"},
+		{"nickname": "Beckham"},
+	}
+	var docInterfaces []interface{}
+	for _, doc := range documents {
+		docInterfaces = append(docInterfaces, doc)
+	}
+	docIds, err := services.NewDocuments("users", docInterfaces)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(docIds)
 }
 func readDocument() {
 	readQuery := services.NewBasicQuery("users")

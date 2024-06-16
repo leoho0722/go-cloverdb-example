@@ -11,6 +11,18 @@ func NewDocument(collectionName string, document interface{}) (docId string, err
 	return repository.NewDocument(collectionName, document)
 }
 
+// NewDocuments 用來建立新的 Documents
+func NewDocuments(collectionName string, documents []interface{}) (docIds []string, err error) {
+	for _, document := range documents {
+		docId, err := NewDocument(collectionName, document)
+		if err != nil {
+			return nil, err
+		}
+		docIds = append(docIds, docId)
+	}
+	return docIds, nil
+}
+
 // GetDocument 使用指定 Query 來查詢 Document
 func GetDocument(query *queryv2.Query) (doc *documentv2.Document, err error) {
 	return repository.GetDocument(query)
