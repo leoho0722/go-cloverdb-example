@@ -8,6 +8,7 @@ import (
 func NewCollection(collectionName string) error {
 	database.DB.Mutex.Lock()
 	defer database.DB.Mutex.Unlock()
+
 	exists, err := database.DB.Context.HasCollection(collectionName)
 	if err != nil {
 		return err
@@ -25,6 +26,7 @@ func NewCollection(collectionName string) error {
 func ListCollections() ([]string, error) {
 	database.DB.Mutex.Lock()
 	defer database.DB.Mutex.Unlock()
+
 	return database.DB.Context.ListCollections()
 }
 
@@ -40,6 +42,7 @@ func ImportCollection(collectionName string, importPath string) error {
 func ExportCollection(collectionName string, exportPath string) error {
 	database.DB.Mutex.Lock()
 	defer database.DB.Mutex.Unlock()
+
 	return database.DB.Context.ExportCollection(collectionName, exportPath)
 }
 
@@ -47,5 +50,6 @@ func ExportCollection(collectionName string, exportPath string) error {
 func DropCollection(collectionName string) error {
 	database.DB.Mutex.Lock()
 	defer database.DB.Mutex.Unlock()
+
 	return database.DB.Context.DropCollection(collectionName)
 }

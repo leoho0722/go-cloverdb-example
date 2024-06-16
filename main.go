@@ -37,10 +37,10 @@ func main() {
 	newDocuments()
 
 	// Read
-	// readDocument()
+	readDocuments()
 
 	// Read All
-	readDocuments()
+	// readAllDocuments()
 
 	// Update
 	// updateDocument()
@@ -123,9 +123,11 @@ func newDocument() {
 	fmt.Println(docId)
 }
 func newDocuments() {
-	documents := []map[string]interface{}{
-		{"name": "David"},
-		{"nickname": "Beckham"},
+	var documents []map[string]interface{}
+	for i := 0; i < 5; i++ {
+		documents = append(documents, map[string]interface{}{
+			"num": i,
+		})
 	}
 	var docInterfaces []interface{}
 	for _, doc := range documents {
@@ -137,16 +139,20 @@ func newDocuments() {
 	}
 	fmt.Println(docIds)
 }
-func readDocument() {
+func readDocuments() {
 	readQuery := services.NewBasicQuery("users")
-	readQuery = readQuery.Where(queryv2.Field("_id").Eq("501f9b9d-7c21-4a23-9018-0cce404639fa"))
-	doc, err := services.GetDocument(readQuery)
+	readQuery = readQuery.Where(queryv2.Field("num").Gt(49))
+	readQuery = readQuery.Sort(queryv2.SortOption{Field: "num", Direction: 1})
+	docs, err := services.GetDocuments(readQuery)
 	if err != nil {
 		panic(err)
 	}
-	fmt.Println(doc)
+	fmt.Println(len(docs))
+	for _, doc := range docs {
+		fmt.Println(doc)
+	}
 }
-func readDocuments() {
+func readAllDocuments() {
 	readAllQuery := services.NewBasicQuery("users")
 	docs, err := services.GetDocuments(readAllQuery)
 	if err != nil {

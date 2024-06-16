@@ -23,11 +23,6 @@ func NewDocuments(collectionName string, documents []interface{}) (docIds []stri
 	return docIds, nil
 }
 
-// GetDocument 使用指定 Query 來查詢 Document
-func GetDocument(query *queryv2.Query) (doc *documentv2.Document, err error) {
-	return repository.GetDocument(query)
-}
-
 // GetDocuments 使用指定 Query 來查詢 Documents
 func GetDocuments(query *queryv2.Query) (docs []*documentv2.Document, err error) {
 	return repository.GetDocuments(query)
